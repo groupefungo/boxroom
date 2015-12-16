@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  impressionist
+
   protect_from_forgery
 
   before_action :require_admin_in_system

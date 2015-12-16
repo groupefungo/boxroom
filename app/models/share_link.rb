@@ -1,4 +1,20 @@
+# == Schema Information
+#
+# Table name: share_links
+#
+#  id              :integer          not null, primary key
+#  emails          :string(255)
+#  link_token      :string(255)
+#  link_expires_at :datetime
+#  user_file_id    :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#  message         :text(65535)
+#  user_id         :integer
+#
+
 class ShareLink < ActiveRecord::Base
+  has_paper_trail
   belongs_to :user
   belongs_to :user_file
 

@@ -1,4 +1,19 @@
+# == Schema Information
+#
+# Table name: user_files
+#
+#  id                      :integer          not null, primary key
+#  attachment_file_name    :string(255)
+#  attachment_content_type :string(255)
+#  attachment_file_size    :integer
+#  attachment_updated_at   :datetime
+#  folder_id               :integer
+#  created_at              :datetime
+#  updated_at              :datetime
+#
+
 class UserFile < ActiveRecord::Base
+  has_paper_trail
   has_attached_file :attachment, :path => ':rails_root/uploads/:rails_env/:id/:style/:id', :restricted_characters => RESTRICTED_CHARACTERS
   do_not_validate_attachment_file_type :attachment
 
@@ -9,6 +24,13 @@ class UserFile < ActiveRecord::Base
   validates_presence_of :folder_id
   validates_uniqueness_of :attachment_file_name, :scope => 'folder_id', :message => I18n.t(:exists_already, :scope => [:activerecord, :errors, :messages])
   validates_format_of :attachment_file_name, :with => /\A[^\/\\\?\*:|"<>]+\z/, :message => I18n.t(:invalid_characters, :scope => [:activerecord, :errors, :messages])
+
+  searchable do
+    text :attachment_file_name, :attachment
+  end
+
+
+
 
   def copy(target_folder)
     new_file = self.dup

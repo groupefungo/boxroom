@@ -1,4 +1,16 @@
+# == Schema Information
+#
+# Table name: folders
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  parent_id  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Folder < ActiveRecord::Base
+  has_paper_trail
   acts_as_tree :order => 'name'
 
   has_many :user_files, -> { order :attachment_file_name }, :dependent => :destroy

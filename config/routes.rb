@@ -1,4 +1,5 @@
 Boxroom::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get '/file_exists', :to => 'files#exists'
   get '/signin', :to => 'sessions#new', :as => 'signin'
   delete '/signout', :to => 'sessions#destroy'

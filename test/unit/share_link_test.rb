@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: share_links
+#
+#  id              :integer          not null, primary key
+#  emails          :string(255)
+#  link_token      :string(255)
+#  link_expires_at :datetime
+#  user_file_id    :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#  message         :text(65535)
+#  user_id         :integer
+#
+
 require 'test_helper'
 
 class ShareLinkTest < ActiveSupport::TestCase

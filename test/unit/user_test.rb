@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                              :integer          not null, primary key
+#  name                            :string(255)
+#  email                           :string(255)
+#  hashed_password                 :string(255)
+#  password_salt                   :string(255)
+#  is_admin                        :boolean
+#  remember_token                  :string(255)
+#  reset_password_token            :string(255)
+#  reset_password_token_expires_at :datetime
+#  created_at                      :datetime
+#  updated_at                      :datetime
+#  signup_token                    :string(255)
+#  signup_token_expires_at         :datetime
+#
+
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase

@@ -55,3 +55,5 @@ Rails.application.configure do
   # From address
   # ActionMailer::Base.default :from => 'Boxroom <yourname@yourdomain.com>'
 end
+
+Rails.application.routes.default_url_options[:host] = 'localhost:3006'

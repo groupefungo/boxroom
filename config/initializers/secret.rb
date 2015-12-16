@@ -1,0 +1,1 @@
+Boxroom::Application.config.secret_key_base = 'd38e5ac37686e9bdf90956b72c75a33a19118229745d27145ac'
